@@ -43,12 +43,12 @@ For this app I'm using:
 
 ### User related stuff:
 
-- [] CreateUser function
+- [x] CreateUser function
   - username
   - password
   - it's given an automatic ID
   - starts in reputation = 0
-- [] Pre-loading some test users
+- [x] Pre-loading some test users
 - [] Login
   - [] Validation
   - [] Actual login

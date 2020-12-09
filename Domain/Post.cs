@@ -50,6 +50,5 @@ namespace Domain
             this.id = lastId;
             lastId++;
         }
-
     }
 }

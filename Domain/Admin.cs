@@ -11,9 +11,7 @@ namespace Domain
         private static Admin instance;
         private List<User> users;
 
-
         #region Properties
-
         public List<User> Users
         {
             get { return users; }
@@ -27,8 +25,9 @@ namespace Domain
                 if (instance == null) instance = new Admin();
                 return instance;
             }
-        } 
+        }  
         #endregion
+
 
 
         private Admin() {
@@ -47,6 +46,12 @@ namespace Domain
         {
             User ret = new User(username, password);
             return ret;
+        }
+        
+        public void AddUser(User u)
+        {
+            users.Add(u);
+            return;
         }
         
     }
