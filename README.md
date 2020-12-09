@@ -2,6 +2,8 @@
 
 This is a web app project made for fun and also as some great content for my online portfolio.
 
+This will be a Quota/Yahoo type app where people will be able to ask a question and get x amount of answers from other users.
+
 For this app I'm using:
 
 - C#
