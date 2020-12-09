@@ -151,11 +151,20 @@ namespace Domain
         #region Specific Methods
         public void UpvoteQuestion(int id)
         {
+            int uId = -1;
             foreach(Question q in questions)
             {
                 if(q.Id == id)
                 {
                     q.Upvotes++;
+                    uId = q.UserId;
+                }
+            }
+            foreach(User u in users)
+            {
+                if (u.Id == uId)
+                {
+                    u.Reputation++;
                 }
             }
             return;
@@ -163,6 +172,7 @@ namespace Domain
 
         public void UpvoteAnswer(int qId, int aId)
         {
+            int uId = -1;
             foreach (Question q in questions)
             {
                 if (q.Id == qId)
@@ -172,8 +182,16 @@ namespace Domain
                         if(a.Id == aId)
                         {
                             a.Upvotes++;
+                            uId = a.UserId;
                         }
                     }
+                }
+            }
+            foreach(User u in users)
+            {
+                if(u.Id == uId)
+                {
+                    u.Reputation += 10;
                 }
             }
         }

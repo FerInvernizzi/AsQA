@@ -20,7 +20,7 @@ namespace Domain
         } 
         #endregion
 
-        public Question (List<Answer> answers, string content, int userId) : base(content, 0, userId, lastQId)
+        public Question (List<Answer> answers, string content, int userId) : base(content, userId, lastQId)
         {
             this.answers = answers;
             lastQId++;
