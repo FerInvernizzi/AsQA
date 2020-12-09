@@ -36,6 +36,10 @@ For this app I'm using:
 
 - [x] Creation of all the classes needed
   - [x] Admin
+    - [x] Pre-Loads
+    - [x] Methods for creation
+    - [x] Methods for addition
+    - [x] Methods for upvoting
   - [x] User
   - [x] abstract Post
     - [x] Question

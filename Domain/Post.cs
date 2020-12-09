@@ -8,9 +8,7 @@ namespace Domain
 {
     public abstract class Post
     {
-        private static int lastId = 1;
         private int id;
-
         private string content;
         private int upvotes;
         private int userId;
@@ -42,13 +40,12 @@ namespace Domain
         } 
         #endregion
 
-        public Post(string content, int upvotes, int userId)
+        public Post(string content, int userId, int id)
         {
             this.content = content;
-            this.upvotes = upvotes;
+            this.upvotes = 0;
             this.userId = userId;
-            this.id = lastId;
-            lastId++;
+            this.id = id;
         }
     }
 }

@@ -8,6 +8,7 @@ namespace Domain
 {
     public class Question : Post
     {
+        private static int lastQId = 1;
         private List<Answer> answers;
 
         #region Properties
@@ -19,9 +20,10 @@ namespace Domain
         } 
         #endregion
 
-        public Question (List<Answer> answers, string content, int upvotes, int userId) : base(content, upvotes, userId)
+        public Question (List<Answer> answers, string content, int userId) : base(content, 0, userId, lastQId)
         {
-            this.answers = answers; 
+            this.answers = answers;
+            lastQId++;
         }
 
     }

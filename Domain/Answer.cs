@@ -8,9 +8,11 @@ namespace Domain
 {
     public class Answer : Post
     {
+        private static int lastAId = 1;
 
-        public Answer(string content, int upvotes, int userId) : base(content, upvotes, userId)
+        public Answer(string content, int userId) : base(content, userId, lastAId)
         {
+            lastAId++;
         }
     }
 }
