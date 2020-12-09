@@ -43,9 +43,9 @@ namespace Domain
             return ret;
         }
 
-        public User CreateUser(string name, string password)
+        public User CreateUser(string username, string password)
         {
-            User ret = new User(name, password);
+            User ret = new User(username, password);
             return ret;
         }
         

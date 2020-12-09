@@ -8,17 +8,25 @@ namespace Domain
 {
     public class User
     {
-        private string name;
-        private int id;
         private static int lastId = 1;
+        private int id;
+
+        private string username;
         private string password;
+        private int reputation;
 
 
         #region Properties
-        public string Name
+        public string Username
         {
-            get { return name; }
-            set { name = value; }
+            get { return username; }
+            set { username = value; }
+        }
+
+        public string Password
+        {
+            get { return password; }
+            set { password = value; }
         }
 
         public int Id
@@ -27,23 +35,19 @@ namespace Domain
             set { id = value; }
         }
 
-        public static int LastId
+        public int Reputation
         {
-            get { return lastId; }
+            get { return reputation; }
+            set { reputation = value; }
         }
-
-
-        public string Password
-        {
-            get { return password; }
-            set { password = value; }
-        } 
+        
         #endregion
 
-        public User(string name, string password)
+        public User(string username, string password)
         {
-            this.name = name;
+            this.username = username;
             this.password = password;
+            this.reputation = 0;
             this.id = lastId;
             lastId++;
         }

@@ -32,9 +32,17 @@ For this app I'm using:
     *
     *
 
+### Domain issues v1.0
+
+- [x] Creation of all the classes needed
+  - [x] Admin
+  - [x] User
+  - [x] abstract Post
+    - [x] Question
+    - [x] Answer
+
 ### User related stuff:
 
-- [] Creation of the User class
 - [] CreateUser function
   - username
   - password

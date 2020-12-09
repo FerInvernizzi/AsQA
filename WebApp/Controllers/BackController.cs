@@ -9,6 +9,7 @@ namespace WebApp.Controllers
 {
     public class BackController : Controller
     {
+        Admin system = Admin.Instance;
         // GET: Back
         public ActionResult Index()
         {

@@ -10,10 +10,11 @@ namespace WebApp.Controllers
 {
     public class MainController : Controller
     {
+        Admin system = Admin.Instance;
+
         // GET: Main
         public ActionResult Index()
         {
-            
             return View();
         }
     }
