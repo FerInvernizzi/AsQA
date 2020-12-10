@@ -14,6 +14,10 @@ nav{
     width: 10%;
 }
 
+h1{
+    letter-spacing: 2px;
+}
+
 nav a svg{
     width: 100%;
     height: auto;
@@ -62,5 +66,64 @@ nav ul{
     cursor: pointer;
     border: 1px black solid;
     background-color: rgba(255, 255, 255, 0.7);
-    }
+}
 
+.container-articles{
+    height: 100%;
+    display: block;
+    border: rgba(100, 100, 100, 0.2) solid 2px;
+    border-bottom: none;
+    padding: 12px;
+    padding-left: 20px;
+    width: 70%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post{
+    margin-bottom: 60px;
+}
+
+.question {
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.q-user{
+    font-size: 12px;
+    margin-left: 10px;
+}
+
+.answer{
+    list-style: disc;
+}
+
+.flex{
+    display: flex;
+    align-items: baseline;
+}
+
+.upvote{
+    border: none;
+    background-color: rgb(235, 235, 235);
+}
+
+.upvote svg{
+    transition: 0.3s all ease;
+}
+
+.upvote:hover path{
+    fill: rgba(0, 0, 0, 0.2)
+}
+
+
+.rotate svg {
+    transform: rotate(180deg);
+    width: 15px;
+    height: 13px;
+}
+
+.rotate path{
+    fill: rgb(215, 56, 94);
+}

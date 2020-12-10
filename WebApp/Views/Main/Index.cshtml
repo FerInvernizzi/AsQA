@@ -2,10 +2,66 @@
 @{
     ViewBag.Title = "Index";
 }
-
 @using Domain;
+<main class="container-articles">
+    @foreach (Question q in ViewBag.questions)
+    {
+        <article class="post">
+            <h2 class="question">@q.Content</h2>
+            <div class="flex">
+                @foreach (User u in ViewBag.users)
+                {
+                    if (u.Id == q.UserId)
+                    {
+                        <p class="q-user">
+                            by:
+                            @u.Username
+                        </p>
+                    }
+                }
+                @if (ViewBag.loggedIn == "null")
+                {
+                    <a class="upvote" href="/Main/Login">
+                        <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
+                        </svg>
 
-<main>
-
-
+                    </a>
+                }
+                else
+                {
+                    <button id="@q.Id" class="upvote" onclick="upVoteQ(@q.Id)">
+                        <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
+                        </svg>
+                    </button>
+                }
+            </div>
+            <ul>
+                @foreach (Answer a in q.Answers)
+                {
+                    <li class="answer">@a.Content</li>
+                    foreach (User u in ViewBag.users)
+                    {
+                        if (a.UserId == u.Id)
+                        {
+                            <p class="q-user">
+                                by
+                                @u.Username
+                            </p>
+                        }
+                    }
+                }
+            </ul>
+        </article>
+    }
 </main>
+
+<script>
+
+    function upVoteQ(param) {
+        const button = document.getElementById(param.toString());
+        button.classList.toggle("rotate");
+    }
+
+</script>

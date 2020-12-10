@@ -77,7 +77,7 @@ namespace Domain
             #region Question 1
             List<Answer> answers1 = new List<Answer>();
             answers1.Add(CreateAnswer("I think you should try to reboot, once that's done, try n run it", Users[1].Id));
-            answers1.Add(CreateAnswer("You should re-install the app, it's a pretty common error", Users[0].Id));
+            answers1.Add(CreateAnswer("You should re-install the app, it's a pretty common error", Users[4].Id));
             Question q1 = CreateQuestion(answers1, "¿How do I make Visual Studio work when it closes down by itself?", Users[2].Id);
             q1.Upvotes += 5;
             ret.Add(q1);
@@ -95,7 +95,7 @@ namespace Domain
 
             #region Question 3
             List<Answer> answers3 = new List<Answer>();
-            answers3.Add(CreateAnswer("You should get used to jumping or rather falling frequently.", Users[0].Id));
+            answers3.Add(CreateAnswer("You should get used to jumping or rather falling frequently.", Users[1].Id));
             Question q3 = CreateQuestion(answers3, "¿Any tips for a neewbie goalkeeper?", Users[4].Id);
             q2.Upvotes += 1;
             ret.Add(q3);
