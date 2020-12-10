@@ -11,6 +11,7 @@ namespace Domain
         private static Admin instance;
         private List<User> users;
         private List<Question> questions;
+        private User loggedUser;
 
         #region Properties
 
@@ -38,10 +39,19 @@ namespace Domain
         }
         #endregion
 
+
+        public User LoggedUser
+        {
+            get { return loggedUser; }
+            set { loggedUser = value; }
+        }
+
+
         #region Constructor 
         private Admin() {
             this.users = LoadUsers();
             this.questions = LoadQuestions();
+            this.loggedUser = Users[0];
         }
         #endregion
 
@@ -50,6 +60,7 @@ namespace Domain
         private List<User> LoadUsers()
         {
             List<User> ret = new List<User>();
+            ret.Add(CreateUser("null", "null"));
             ret.Add(CreateUser("Fernando", "Password1"));
             ret.Add(CreateUser("Natalia", "Nat_nat1805"));
             ret.Add(CreateUser("Hector", "Kung_fu84"));
@@ -194,6 +205,25 @@ namespace Domain
                     u.Reputation += 10;
                 }
             }
+        }
+
+        public void Login(int id)
+        {
+            foreach(User u in users)
+            {
+                if(u.Id == id)
+                {
+                    Admin.instance.LoggedUser = u;
+                    return;
+                }
+            }
+            return;
+        }
+
+        public void Logout()
+        {
+            Admin.Instance.LoggedUser = users[0];
+            return;
         }
         
         #endregion

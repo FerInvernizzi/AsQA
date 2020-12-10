@@ -4,36 +4,49 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("AsQA", "Index", "Main", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
-            </div>
-        </div>
+
+    <div class="container">
+        <nav>
+            <a class="a-img" href="/Main/Index">
+                <svg width="301" height="221" viewBox="0 0 301 221" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.72545 180.317C3.56711 180.642 1.64263 184.127 2.05878 184.873C2.42103 185.523 3.43174 185.686 4.16989 185.595C11.6783 184.669 16.7957 179.828 21.9477 174.206C46.9737 146.896 61.9809 110.741 78.0588 77.9841C84.2226 65.4262 90.1754 52.7655 96.3366 40.2063C100.768 31.1725 105.13 22.0999 109.837 13.2063C111.671 9.73956 112.91 5.63173 115.948 3.15074C117.147 2.17148 116.693 6.22542 116.503 7.76185C115.557 15.4091 113.832 22.94 112.559 30.5396C105.119 74.9352 96.3442 121.313 101.503 166.54C103.526 184.271 110.392 218.337 134.948 218.484C142.004 218.526 142.229 215.226 145.725 211.317" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M36.7254 150.317C65.3921 144.984 94.0588 139.651 122.725 134.317" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M140.725 162.317C137.912 156.288 129.544 154.168 123.281 155.873C120.093 156.741 117.504 159.386 119.614 162.873C123.672 169.579 134.384 171.461 141.17 172.929C147.339 174.262 161.141 176.281 149.114 184.262C143.63 187.901 139.032 188.777 132.503 188.151C125.354 187.465 123.912 184.509 118.725 181.317" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M125.203 99.5214C120.172 72.0631 122.511 41.4048 145.48 22.2436C155.211 14.1261 168.588 7.81657 181.647 9.18808C199.899 11.105 212.93 26.1685 218.203 42.7436C227.832 73.0159 214.951 109.208 184.48 121.799C171.612 127.117 157.58 127.263 145.091 120.744C133.399 114.641 130.013 105.086 124.203 94.5214" stroke="#D7385E" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M171.203 108.521C185.05 124.046 198.627 139.764 212.203 155.521" stroke="#D7385E" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M229.701 123.606C230.315 131.52 230.763 142.697 219.201 140.328C202.737 136.956 218.94 121.235 224.145 115.717C234.895 104.321 215.739 102.313 214.145 108.273C210.846 120.615 223.828 136.647 229.701 146.606" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M192 185.313C201.875 194.269 212.297 180.907 218 173.091C242.039 140.143 254.734 100.967 274.778 65.8686C275.28 64.9888 277.449 63.3017 277.389 64.313C277.019 70.5669 274.93 76.5994 273.778 82.7575C269.411 106.096 264.726 127.201 264.444 151.091C264.32 161.681 264.734 174.293 272.111 182.98C276.675 188.354 274.865 183.185 278 184.313" stroke="#D7385E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M230 153.313C253 151.313 276 149.313 299 147.313" stroke="#D7385E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </a>
+            <ul>
+                <a href="/Main/Index">
+                <li>Inicio</li>
+                </a>
+                <a href="#">
+                <li>Perfil</li>
+                </a>
+                <li><a class="btn custom-btn" href="/Back/Login">Login</a></li>
+            </ul>
+        </nav>
     </div>
 
     <div class="container body-content">
         @RenderBody()
+    </div>
+
+    <div class="container">
         <hr />
-        <footer>
+        <footer class="modal-footer">
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
-
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>

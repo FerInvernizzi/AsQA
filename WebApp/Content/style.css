@@ -1,0 +1,66 @@
+﻿body {
+    background-color: rgb(235, 235, 235);
+}
+
+li{
+     list-style: none;
+}
+
+nav{
+    display:flex;
+}
+
+.a-img {
+    width: 10%;
+}
+
+nav a svg{
+    width: 100%;
+    height: auto;
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+a:hover li {
+    color: rgb(215, 56, 94);
+}
+
+ul a li {
+    color: black;
+}
+
+svg:hover path{
+    transition: 0.3s all ease;
+    stroke-width: 4;
+}
+
+nav ul{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+    margin-left:auto;
+}
+
+
+.custom-btn {
+    font-size: 13px;
+    background-color: rgb(215, 56, 94);
+    padding: 30px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border-radius: 1px;
+    color: white;
+    transition: 0.1s all ease;
+}
+
+    
+.custom-btn:hover {
+    color: rgb(215, 56, 94);
+    cursor: pointer;
+    border: 1px black solid;
+    background-color: rgba(255, 255, 255, 0.7);
+    }
+
