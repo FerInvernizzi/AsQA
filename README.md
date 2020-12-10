@@ -1,5 +1,7 @@
 # AsQA
 
+This project started: 08/12/2020
+
 This is a web app project made for fun and also as some great content for my online portfolio.
 
 This will be a Quota/Yahoo type app where people will be able to ask a question and get x amount of answers from other users.
@@ -24,13 +26,14 @@ For this app I'm using:
 ### Design and display:
 
 - [] Display for every view
+  - [x] Nav
+  - [] Question display
 - [] Overall design pattern and color palette picked
 
 ## Color list once picked:
 
-    *
-    *
-    *
+    * rgb(215, 56, 94)
+    * rgb(235, 235, 235)
 
 ### Domain issues v1.0
 
@@ -99,3 +102,7 @@ Question having an extra "List<Answer> answers" atribute and being basically the
   - Upvoted random answer = +15 rep.
 
 - When an answer is selected as the best by the user asking a question, this answer shall be pinned to the top of all answers and have some kind of visual indication hinting it's the most useful answer.
+
+UPDATE (09/12/2020) null user
+
+- I will manage the logged user by creating a "null" user and basing my comprobations around it whenever there's no actual user logged in.
