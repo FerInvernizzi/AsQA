@@ -12,9 +12,18 @@ namespace Domain
         private string content;
         private int upvotes;
         private int userId;
+        private List<User> upvoteUsersId;
+
 
 
         #region Properties
+
+        public List<User> UpvoteUsersId
+        {
+            get { return upvoteUsersId; }
+            set { upvoteUsersId = value; }
+        }
+
         public int Id
         {
             get { return id; }
@@ -46,6 +55,7 @@ namespace Domain
             this.upvotes = 0;
             this.userId = userId;
             this.id = id;
+            this.upvoteUsersId = new List<User>();
         }
     }
 }

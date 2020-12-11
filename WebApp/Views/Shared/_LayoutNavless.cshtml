@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    Layout = null;
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -8,11 +12,11 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
-    <link href="~/Content/style.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/ .css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div class="container">
-        <nav>
+        <nav class="navless-nav">
             <a class="a-img" href="/Main/Index">
                 <svg width="301" height="221" viewBox="0 0 301 221" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3.72545 180.317C3.56711 180.642 1.64263 184.127 2.05878 184.873C2.42103 185.523 3.43174 185.686 4.16989 185.595C11.6783 184.669 16.7957 179.828 21.9477 174.206C46.9737 146.896 61.9809 110.741 78.0588 77.9841C84.2226 65.4262 90.1754 52.7655 96.3366 40.2063C100.768 31.1725 105.13 22.0999 109.837 13.2063C111.671 9.73956 112.91 5.63173 115.948 3.15074C117.147 2.17148 116.693 6.22542 116.503 7.76185C115.557 15.4091 113.832 22.94 112.559 30.5396C105.119 74.9352 96.3442 121.313 101.503 166.54C103.526 184.271 110.392 218.337 134.948 218.484C142.004 218.526 142.229 215.226 145.725 211.317" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
@@ -25,15 +29,6 @@
                     <path d="M230 153.313C253 151.313 276 149.313 299 147.313" stroke="#D7385E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </a>
-            <ul>
-                <a href="/Main/Index">
-                <li>Home</li>
-                </a>
-                <a href="#">
-                <li>Profile</li>
-                </a>
-                <li><a class="btn custom-btn" href="/Main/Login">Login</a></li>
-            </ul>
         </nav>
     </div>
 

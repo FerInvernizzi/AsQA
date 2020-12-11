@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +20,9 @@ namespace Domain
         } 
         #endregion
 
-        public Question (List<Answer> answers, string content, int userId) : base(content, userId, lastQId)
+        public Question (string content, int userId) : base(content, userId, lastQId)
         {
-            this.answers = answers;
+            this.answers = new List<Answer>();
             lastQId++;
         }
 

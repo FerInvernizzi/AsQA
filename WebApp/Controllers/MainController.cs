@@ -20,5 +20,10 @@ namespace WebApp.Controllers
             ViewBag.users = system.Users;
             return View();
         }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
     }
 }
