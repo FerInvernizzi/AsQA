@@ -106,3 +106,33 @@ Question having an extra "List<Answer> answers" atribute and being basically the
 UPDATE (09/12/2020) null user
 
 - I will manage the logged user by creating a "null" user and basing my comprobations around it whenever there's no actual user logged in.
+
+UPDATE (11/12/2020) UpVote class, login and posts ID
+
+I haven't touch the actual code since morning, but a couple
+ideas actually popped up:
+
+1. Login
+
+- I need to learn in detail how viewbag actually works, I may
+  use a viewbag login boolean in order not to display the nav
+  during login process.
+  I actually tried to use another layout view (\_LayoutNavless.cshtml), but I now think that might be overcomplicating stuff way too much, needlesly.
+
+- Thinking about the actual login process itself, made me realize it might be better to have loggedUser be the actual user object rather than the ID, so I can easily access the atributes from anywhere.
+
+2. Upvote class
+
+- I pretty much decided to make upvotes their own class so I can store important data such as the user upvoting, the user who's post was upvoted, etc.
+  This means the upvote atribute in the post class, will become a List of Upvotes.
+
+3. Posts ID
+
+- I've come to a realization that just asigning auto-generated numbers from 1 on, may be rather confusing while working with posts ID's when upvoting, giving parameters for the existing methods, etc.
+
+Solution:
+ID's will now be strings and "q" or "a" will be added to the start of the string so I instantly get to know what type of object it is. The idea sounds useful for the upvoting system and it may make some things easier as the project grows bigger.
+
+ANNOTATION - This last commit will include the \_LayoutNavless.csthml stuff I talked about in the login part, reverts for this won't be made for a completely transparent and honest devlog.
+
+I'm also feeling highly motivated and this project actually has made my mind way more active, trying to find solutions for the problems that show up and making me an overall better programmer by forcing me out of my comfort zone, I'm really enjoying this experience!
