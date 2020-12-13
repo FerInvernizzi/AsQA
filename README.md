@@ -136,3 +136,7 @@ ID's will now be strings and "q" or "a" will be added to the start of the string
 ANNOTATION - This last commit will include the \_LayoutNavless.csthml stuff I talked about in the login part, reverts for this won't be made for a completely transparent and honest devlog.
 
 I'm also feeling highly motivated and this project actually has made my mind way more active, trying to find solutions for the problems that show up and making me an overall better programmer by forcing me out of my comfort zone, I'm really enjoying this experience!
+
+UPDATE (12/12/2020) Cache issue
+
+- I just understood some of the problems cache was giving me while trying to edit some of the styles on the webpage. The browser was "cacheing" my recent changes when changing views, so they won't show up.

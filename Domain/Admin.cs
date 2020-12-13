@@ -212,22 +212,15 @@ namespace Domain
 
         }
 
-        public void Login(int id)
+        public void Login(User u)
         {
-            foreach(User u in users)
-            {
-                if(u.Id == id)
-                {
-                    Admin.instance.LoggedUser = u;
-                    return;
-                }
-            }
+            Instance.LoggedUser = u;
             return;
         }
 
         public void Logout()
         {
-            Admin.Instance.LoggedUser = users[0];
+            Instance.LoggedUser = users[0];
             return;
         }
         

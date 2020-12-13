@@ -1,6 +1,9 @@
 ﻿body {
     background-color: rgb(235, 235, 235);
+    font-family: "Lato", sans-serif;
 }
+
+/* Nav */
 
 li{
      list-style: none;
@@ -33,6 +36,7 @@ a:hover li {
 
 ul a li {
     color: black;
+    font-size: 18px;
 }
 
 svg:hover path{
@@ -50,7 +54,7 @@ nav ul{
 
 
 .custom-btn {
-    font-size: 13px;
+    font-size: 18px;
     background-color: rgb(215, 56, 94);
     padding: 30px;
     padding-bottom: 5px;
@@ -68,10 +72,12 @@ nav ul{
     background-color: rgba(255, 255, 255, 0.7);
 }
 
+/* End Nav*/
+
 .container-articles{
     height: 100%;
     display: block;
-    border: rgba(100, 100, 100, 0.2) solid 2px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, .1);
     border-bottom: none;
     padding: 12px;
     padding-left: 20px;
@@ -86,17 +92,18 @@ nav ul{
 }
 
 .question {
-    font-size: 20px;
+    font-size: 22px;
     letter-spacing: 1px;
 }
 
 .q-user{
-    font-size: 12px;
+    font-size: 14px;
     margin-left: 10px;
 }
 
 .answer{
     list-style: disc;
+    font-size: 16px;
 }
 
 .flex{
@@ -126,4 +133,85 @@ nav ul{
 
 .rotate path{
     fill: rgb(215, 56, 94);
+}
+
+/* Login */
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+    width: 100%;
+    flex-direction: column;
+}
+
+.form_div{
+    width: 90%;
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.login-title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.form_input{
+    font-size: 20px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.form_input input{
+    width: 100%;
+    padding: 5px;
+    font-size: 18px;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 5px;
+    transition: .1s all ease;
+}
+
+.form_input input:hover{
+   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.150);
+
+}
+
+.form_div .form-button {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: "Lato", sans-serif;
+    background-color: rgba(215, 56, 94, 1);
+    color: white;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: .3s ease background-color;
+}
+
+.form-button.first{
+    margin-top: 30px;
+}
+
+.form_div .form-button:hover {
+    background-color: rgba(215, 56, 94, .8);
+}
+
+.failure{
+    background-color: rgba(255, 50, 50, .3);
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 290px;
+    padding: 10px;
+    transition: .3s all ease;
 }

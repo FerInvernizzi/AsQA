@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - AsQ&A</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/x-icon" href="~/img/favicon.svg">
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -25,15 +27,33 @@
                     <path d="M230 153.313C253 151.313 276 149.313 299 147.313" stroke="#D7385E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </a>
-            <ul>
-                <a href="/Main/Index">
-                <li>Home</li>
-                </a>
-                <a href="#">
-                <li>Profile</li>
-                </a>
-                <li><a class="btn custom-btn" href="/Main/Login">Login</a></li>
-            </ul>
+            @if (ViewBag.Title != "Login")
+            {
+                <ul>
+                    <a href="/Main/Index">
+                        <li>Home</li>
+                    </a>
+                    @if (ViewBag.loggedIn == "null")
+                    {
+                        <a href="/Main/Login">
+                            <li>Profile</li>
+                        </a>
+                    } else
+                    {
+                    <a href="#">
+                        <li>Profile</li>
+                    </a>
+                    }
+
+                    @if(ViewBag.loggedIn == "null")
+                    {
+                    <li><a class="btn custom-btn" href="/Main/Login">Login</a></li>
+                    } else
+                    {
+                    <li><a class="btn custom-btn" href="/Back/Logout">Logout</a></li>
+                    }
+                </ul>
+            }
         </nav>
     </div>
 

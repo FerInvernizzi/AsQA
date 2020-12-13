@@ -1,9 +1,33 @@
 ﻿
 @{
-    Layout = "~/Views/Shared/_LayoutNavless.cshtml";
+    ViewBag.Login = true;
     ViewBag.Title = "Login";
 }
 
-<div class="container login-container">
-    <h1>Login</h1>
-</div>
+<section>
+    <div class="form_div">
+        <div class="login-title">
+            <h1>Login</h1>
+        </div>
+        <form action="/Back/TryLogin" method="post">
+            <div class="form_input">
+                <label for="username">Username</label>
+                <input required type="text" autocomplete="on" id="username" name="username" />
+            </div>
+
+            <div class="form_input">
+                <label for="password">Password</label>
+                <input required type="password" autocomplete="on" id="password" name="password" />
+            </div>
+
+            <button class="form-button first" type="submit">Login</button>
+        </form>
+            <button class="form-button">
+                @Html.ActionLink("Register", "Register", "Main", null, new { @style="color: white; padding-left: 33%; padding-right: 33%; padding-top: 10px; padding-bottom: 10px;"})
+            </button>
+    </div>
+    @if (!ViewBag.success)
+    {
+        <div class="failure">Wrong password or username</div>
+    }
+</section>

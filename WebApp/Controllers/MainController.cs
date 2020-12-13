@@ -23,6 +23,7 @@ namespace WebApp.Controllers
 
         public ActionResult Login()
         {
+            ViewBag.success = true;
             return View();
         }
     }

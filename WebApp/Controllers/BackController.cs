@@ -11,9 +11,23 @@ namespace WebApp.Controllers
     {
         Admin system = Admin.Instance;
         // GET: Back
-        public ActionResult Index()
+        public ActionResult TryLogin(string username, string password)
         {
-            return View();
+            foreach(User u in system.Users)
+            {
+                if(u.Username == username && u.Password == password)
+                {
+                    system.Login(u);
+                    return RedirectToAction("Index", "Main");
+                }
+            }
+            return RedirectToAction("Login", "Main");
+        }
+
+        public ActionResult Logout()
+        {
+            system.Logout();
+            return RedirectToAction("Index", "Main");
         }
     }
 }
