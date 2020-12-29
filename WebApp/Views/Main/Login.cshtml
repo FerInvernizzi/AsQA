@@ -1,6 +1,5 @@
 ﻿
 @{
-    ViewBag.Login = true;
     ViewBag.Title = "Login";
 }
 
@@ -26,8 +25,4 @@
                 @Html.ActionLink("Register", "Register", "Main", null, new { @style="color: white; padding-left: 33%; padding-right: 33%; padding-top: 10px; padding-bottom: 10px;"})
             </button>
     </div>
-    @if (!ViewBag.success)
-    {
-        <div class="failure">Wrong password or username</div>
-    }
 </section>

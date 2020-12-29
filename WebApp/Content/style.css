@@ -124,6 +124,10 @@ nav ul{
     fill: rgba(0, 0, 0, 0.2)
 }
 
+.rotate:hover path{
+    fill: rgba(215, 56, 94, 0.3) !important;
+}
+
 
 .rotate svg {
     transform: rotate(180deg);

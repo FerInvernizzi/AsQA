@@ -8,23 +8,23 @@ namespace Domain
 {
     public abstract class Post
     {
-        private int id;
+        private string id;
         private string content;
-        private int upvotes;
         private int userId;
-        private List<User> upvoteUsersId;
+        private List<Upvote> upvotes;
 
 
 
         #region Properties
 
-        public List<User> UpvoteUsersId
+        public List<Upvote> Upvotes
         {
-            get { return upvoteUsersId; }
-            set { upvoteUsersId = value; }
+            get { return upvotes; }
+            set { upvotes = value; }
         }
 
-        public int Id
+
+        public string Id
         {
             get { return id; }
             set { id = value; }
@@ -36,12 +36,6 @@ namespace Domain
             set { content = value; }
         }
 
-        public int Upvotes
-        {
-            get { return upvotes; }
-            set { upvotes = value; }
-        }
-
         public int UserId
         {
             get { return userId; }
@@ -49,13 +43,12 @@ namespace Domain
         } 
         #endregion
 
-        public Post(string content, int userId, int id)
+        public Post(string content, int userId, string id)
         {
             this.content = content;
-            this.upvotes = 0;
             this.userId = userId;
             this.id = id;
-            this.upvoteUsersId = new List<User>();
+            this.upvotes = new List<Upvote>();
         }
     }
 }

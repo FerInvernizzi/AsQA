@@ -10,7 +10,7 @@ namespace Domain
     {
         private static int lastAId = 1;
 
-        public Answer(string content, int userId) : base(content, userId, lastAId)
+        public Answer(string content, int userId) : base(content, userId, "a" + lastAId)
         {
             lastAId++;
         }

@@ -13,10 +13,20 @@
                 {
                     if (u.Id == q.UserId)
                     {
-                        <p class="q-user">
-                            by:
-                            @u.Username
-                        </p>
+                        if (u.Username != ViewBag.loggedIn)
+                        {
+                            <p class="q-user">
+                                by:
+                                @u.Username
+                            </p>
+                        }
+                        else
+                        {
+                            <p class="q-user">
+                                by:
+                                Me
+                            </p>
+                        }
                     }
                 }
                 @if (ViewBag.loggedIn == "null")
@@ -58,9 +68,8 @@
 
 <script>
 
-    function upVoteQ(param) {
-        const button = document.getElementById(param.toString());
-        button.classList.toggle("rotate");
+    function upVoteQ(id) {
+        id.classList.toggle("rotate");
     }
 
 </script>

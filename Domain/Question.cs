@@ -20,7 +20,7 @@ namespace Domain
         } 
         #endregion
 
-        public Question (string content, int userId) : base(content, userId, lastQId)
+        public Question (string content, int userId) : base(content, userId, "q" + lastQId.ToString())
         {
             this.answers = new List<Answer>();
             lastQId++;
