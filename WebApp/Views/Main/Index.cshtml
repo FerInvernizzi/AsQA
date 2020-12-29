@@ -70,6 +70,12 @@
 
     function upVoteQ(id) {
         id.classList.toggle("rotate");
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("Upvote", "Back")",
+            dataType: "string",
+            data: "{name: '@ViewBag.loggedIn', id: id, }",
+        });
     }
 
 </script>

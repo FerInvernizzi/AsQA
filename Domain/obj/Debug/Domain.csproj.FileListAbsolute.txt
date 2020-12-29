@@ -3,4 +3,3 @@ C:\Users\Fer\Desktop\Proyectos\Foro en C#\WebApp\Domain\bin\Debug\Domain.pdb
 C:\Users\Fer\Desktop\Proyectos\Foro en C#\WebApp\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
 C:\Users\Fer\Desktop\Proyectos\Foro en C#\WebApp\Domain\obj\Debug\Domain.dll
 C:\Users\Fer\Desktop\Proyectos\Foro en C#\WebApp\Domain\obj\Debug\Domain.pdb
-C:\Users\Fer\Desktop\Proyectos\Foro en C#\WebApp\Domain\obj\Debug\Domain.csprojAssemblyReference.cache

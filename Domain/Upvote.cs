@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public abstract class Upvote
+    public class Upvote
     {
-        private int postId;
+        private string postId;
         private int userId;
 
         #region Properties
 
 
-        public int PostId
+        public string PostId
         {
             get { return postId; }
             set { postId = value; }
@@ -28,7 +28,7 @@ namespace Domain
         } 
         #endregion
 
-        public Upvote(int postId, int userId, string type)
+        public Upvote(string postId, int userId)
         {
             this.postId = postId;
             this.userId = userId;

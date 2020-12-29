@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Domain;
+using Newtonsoft.Json;
 
 namespace WebApp.Controllers
 {
@@ -28,6 +29,23 @@ namespace WebApp.Controllers
         {
             system.Logout();
             return RedirectToAction("Index", "Main");
+        }
+
+        public ActionResult Upvote(string data)
+        {
+            
+            string[] words = data.Split();
+
+            int userId = -1;
+            foreach(User u in system.Users)
+            {
+                if(json.name == u.Username)
+                {
+                    userId = u.Id;
+                }
+            }
+            system.CreateUpvote(id, userId);
+            return PartialView("_Partial");
         }
     }
 }

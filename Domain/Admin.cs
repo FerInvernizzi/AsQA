@@ -104,21 +104,22 @@ namespace Domain
 
         public User CreateUser(string username, string password)
         {
-            User ret = new User(username, password);
-            return ret;
+            return new User(username, password);
         }
 
         public Question CreateQuestion(string content, int userId)
         {
-            Question ret = new Question(content, userId);
-            return ret;
-
+            return new Question(content, userId);
         }
 
         public Answer CreateAnswer(string content, int userId)
         {
-            Answer ret = new Answer(content, userId);
-            return ret;
+            return new Answer(content, userId);
+        }
+
+        public Upvote CreateUpvote(string postId, int userId)
+        {
+            return new Upvote(postId, userId);
         }
 
         #endregion
@@ -155,15 +156,33 @@ namespace Domain
 
         #region Specific Methods
 
-        public void UpvoteQuestion(int qId, int uId)
+        public void UpvoteQuestion(string qId, int uId)
         {
-            /* COME BACK HERE */
+            foreach(Question q in questions)
+            {
+                if(q.Id == qId)
+                {
+                    q.Upvotes.Add(CreateUpvote(qId, uId));
+                }
+            }
             return;
         }
 
-        public void UpvoteAnswer(int qId, int aId, int uId)
+        public void UpvoteAnswer(string qId, string aId, int uId)
         {
-                /* COME BACK HERE */
+            foreach(Question q in questions)
+            {
+                if(q.Id == qId)
+                {
+                    foreach(Answer a in q.Answers)
+                    {
+                        if(a.Id == aId)
+                        {
+                            a.Upvotes.Add(CreateUpvote(aId, uId));
+                        }
+                    }
+                }
+            }
             return;
 
         }
