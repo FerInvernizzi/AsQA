@@ -13,7 +13,7 @@
                 {
                     if (u.Id == q.UserId)
                     {
-                        if (u.Username != ViewBag.loggedIn)
+                        if (u.Username != ViewBag.loggedIn.Username)
                         {
                             <p class="q-user">
                                 by:
@@ -29,7 +29,7 @@
                         }
                     }
                 }
-                @if (ViewBag.loggedIn == "null")
+                @if (ViewBag.loggedIn.Username == "null")
                 {
                     <a class="upvote" href="/Main/Login">
                         <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -39,17 +39,34 @@
                 }
                 else
                 {
-                    <button id="@q.Id" class="upvote" onclick="upVoteQ(@q.Id)">
-                        <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
-                        </svg>
-                    </button>
+                    if (q.Upvotes.Count == 0)
+                    {
+                        <button id="@q.Id" class="upvote" onclick="upVoteQ(@q.Id)">
+                            <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
+                            </svg>
+                        </button>
+                    }
+                    else
+                    {
+                        foreach (Upvote u in q.Upvotes)
+                        {
+                            if (u.UserId == ViewBag.loggedIn.Id)
+                            {
+                                <button id="@q.Id" class="upvote rotate" onclick="upVoteQ(@q.Id)">
+                                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
+                                    </svg>
+                                </button>
+                            }
+                        }
+                    }
                 }
             </div>
             <ul>
                 @foreach (Answer a in q.Answers)
                 {
-                    <li class="answer">@a.Content</li>
+                    <li class="answer" id="@a.Id  @q.Id">@a.Content</li>
                     foreach (User u in ViewBag.users)
                     {
                         if (a.UserId == u.Id)
@@ -70,12 +87,28 @@
 
     function upVoteQ(id) {
         id.classList.toggle("rotate");
-        $.ajax({
-            type: "POST",
-            url: "@Url.Action("Upvote", "Back")",
-            dataType: "string",
-            data: "{name: '@ViewBag.loggedIn', id: id, }",
-        });
+
+        let send = id.id + " @ViewBag.loggedIn.Id";
+
+        if (id.classList.contains("rotate")) {
+            $.ajax({
+                type: "POST",
+                dataType: "application/json; charset=utf-8",
+                data: { "data": send },
+                url: "@Url.Action("UpvoteQ", "Back")",
+            });
+        } else {
+            $.ajax({
+                type: "POST",
+                dataType: "application/json; charset=utf-8",
+                data: { "data": send },
+                url: "@Url.Action("RemoveUpvoteQ", "Back")",
+            });
+        }
     }
 
+    function upVoteA(aId, qId) { }
+
 </script>
+
+@Html.Partial("_Partial")

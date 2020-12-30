@@ -33,7 +33,7 @@
                     <a href="/Main/Index">
                         <li>Home</li>
                     </a>
-                    @if (ViewBag.loggedIn == "null")
+                    @if (ViewBag.loggedIn.Username == "null")
                     {
                         <a href="/Main/Login">
                             <li>Profile</li>
@@ -45,7 +45,7 @@
                     </a>
                     }
 
-                    @if(ViewBag.loggedIn == "null")
+                    @if(ViewBag.loggedIn.Username == "null")
                     {
                     <li><a class="btn custom-btn" href="/Main/Login">Login</a></li>
                     } else

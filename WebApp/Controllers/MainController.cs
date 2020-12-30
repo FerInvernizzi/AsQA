@@ -15,7 +15,7 @@ namespace WebApp.Controllers
         // GET: Main
         public ActionResult Index()
         {
-            ViewBag.loggedIn = system.LoggedUser.Username;
+            ViewBag.loggedIn = system.LoggedUser;
             ViewBag.questions = system.Questions;
             ViewBag.users = system.Users;
             return View();

@@ -148,9 +148,9 @@ namespace Domain
                 if(q.Id == qId)
                 {
                     q.Answers.Add(CreateAnswer(content, userId));
+                    return;
                 }
             }
-            return;
         }
         #endregion
 
@@ -163,9 +163,27 @@ namespace Domain
                 if(q.Id == qId)
                 {
                     q.Upvotes.Add(CreateUpvote(qId, uId));
+                    return;
                 }
             }
-            return;
+        }
+
+        public void RemoveUpvoteQ(string qId, int uId)
+        {
+            foreach(Question q in questions)
+            {
+                if(qId == q.Id)
+                {
+                    foreach(Upvote u in q.Upvotes)
+                    {
+                        if(uId == u.UserId)
+                        {
+                            q.Upvotes.Remove(u);
+                            return;
+                        }
+                    }
+                }
+            }
         }
 
         public void UpvoteAnswer(string qId, string aId, int uId)
@@ -179,11 +197,11 @@ namespace Domain
                         if(a.Id == aId)
                         {
                             a.Upvotes.Add(CreateUpvote(aId, uId));
+                            return;
                         }
                     }
                 }
             }
-            return;
 
         }
 

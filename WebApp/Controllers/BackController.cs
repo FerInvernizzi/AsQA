@@ -31,20 +31,21 @@ namespace WebApp.Controllers
             return RedirectToAction("Index", "Main");
         }
 
-        public ActionResult Upvote(string data)
-        {
-            
-            string[] words = data.Split();
+        [HttpPost]
 
-            int userId = -1;
-            foreach(User u in system.Users)
-            {
-                if(json.name == u.Username)
-                {
-                    userId = u.Id;
-                }
-            }
-            system.CreateUpvote(id, userId);
+        public ActionResult UpvoteQ(string data)
+        {
+            string[] words = data.Split(' ');
+            int userId = int.Parse(words[1]);
+            system.UpvoteQuestion(words[0], userId);
+            return PartialView("_Partial");
+        }
+
+        public ActionResult RemoveUpvoteQ(string data)
+        {
+            string[] words = data.Split(' ');
+            int userId = int.Parse(words[1]);
+            system.RemoveUpvoteQ(words[0], userId);
             return PartialView("_Partial");
         }
     }
