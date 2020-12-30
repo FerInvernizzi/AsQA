@@ -140,3 +140,16 @@ I'm also feeling highly motivated and this project actually has made my mind way
 UPDATE (12/12/2020) Cache issue
 
 - I just understood some of the problems cache was giving me while trying to edit some of the styles on the webpage. The browser was "cacheing" my recent changes when changing views, so they won't show up.
+
+UPDATE (30/12/2020) Upvote Questions
+
+- Finally I made this system work! It's kind of a messy way of doing it, but it functions correctly so I am sticking to it, for now at least.
+
+Solution:
+I used the onClick="" function on the upvote svg so that, when you click it, the ID of the question gets sent to the UpvoteQ JavaScript function via
+args, then I implemented an Ajax Post method in order to send that data (question ID and user ID) to my back controller. This decision may sound
+weird, but the main reason the Ajax method was used is that I didn't want the page to refresh at all while surfing the index.
+This data then is converted into an actual Upvote object using one of the addUpvote methods in the Admin class (still using Singleton, so the variable system) and added to the upvote list of that particular question. You can also REMOVE the upvote and a similar action takes place, in which the upvote is removed from the upvote list, rather than added.
+You can login and out and posts you liked while logged in with that account, will appear just as you left them last time you where in.
+
+Pretty proud of myself for pulling this gimmick off, I've been stressing out about this way of handling upvotes for quite a few days by now, but hopefully, progress will speed up a little bit from now on. Still highly motivated, really love seeing this project become bigger and bigger as time goes by.
