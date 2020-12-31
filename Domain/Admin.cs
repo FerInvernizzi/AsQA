@@ -76,14 +76,14 @@ namespace Domain
 
             #region Question 1
             Question q1 = CreateQuestion("¿How do I make Visual Studio work when it closes down by itself?", Users[2].Id);
-            q1.Answers.Add(CreateAnswer("I think you should try to reboot, once that's done, try n run it", Users[1].Id));
-            q1.Answers.Add(CreateAnswer("You should re-install the app, it's a pretty common error", Users[4].Id));
+            q1.Answers.Add(CreateAnswer("I think you should try to reboot, once that's done, try n run it.", Users[1].Id));
+            q1.Answers.Add(CreateAnswer("You should re-install the app, it's a pretty common error.", Users[4].Id));
             ret.Add(q1);
             #endregion
 
             #region Question 2
             Question q2 = CreateQuestion("¿How do I clean paint from a pair of trousers?", Users[1].Id);
-            q2.Answers.Add(CreateAnswer("I heard lemmon may do the job! GL", Users[3].Id));
+            q2.Answers.Add(CreateAnswer("I heard lemmon may do the job! GL.", Users[3].Id));
             q2.Answers.Add(CreateAnswer("OMG how did u get paint on your trousers lol!!", Users[4].Id));
             q2.Answers.Add(CreateAnswer("You should try gettin a new pair!", Users[2].Id));
             ret.Add(q2);
@@ -93,6 +93,13 @@ namespace Domain
             Question q3 = CreateQuestion("¿Any tips for a neewbie goalkeeper?", Users[4].Id);
             q3.Answers.Add(CreateAnswer("You should get used to jumping or rather falling frequently.", Users[1].Id));
             ret.Add(q3);
+            #endregion
+
+            #region Question 4
+            Question q4 = CreateQuestion("¿What's the highest note on Bohemian Rhapsody?", Users[1].Id);
+            q4.Answers.Add(CreateAnswer("I think it is F#4.", Users[3].Id));
+            q4.Answers.Add(CreateAnswer("Yeah, it's F#4 indeed!", Users[4].Id));
+            ret.Add(q4);
             #endregion
 
             return ret;
@@ -143,9 +150,9 @@ namespace Domain
 
         public void AddAnswer(string content, int userId, string qId)
         {
-            foreach(Question q in questions)
+            foreach (Question q in questions)
             {
-                if(q.Id == qId)
+                if (q.Id == qId)
                 {
                     q.Answers.Add(CreateAnswer(content, userId));
                     return;
@@ -158,9 +165,9 @@ namespace Domain
 
         public void UpvoteQuestion(string qId, int uId)
         {
-            foreach(Question q in questions)
+            foreach (Question q in questions)
             {
-                if(q.Id == qId)
+                if (q.Id == qId)
                 {
                     q.Upvotes.Add(CreateUpvote(qId, uId));
                     return;
@@ -170,13 +177,13 @@ namespace Domain
 
         public void RemoveUpvoteQ(string qId, int uId)
         {
-            foreach(Question q in questions)
+            foreach (Question q in questions)
             {
-                if(qId == q.Id)
+                if (qId == q.Id)
                 {
-                    foreach(Upvote u in q.Upvotes)
+                    foreach (Upvote u in q.Upvotes)
                     {
-                        if(uId == u.UserId)
+                        if (uId == u.UserId)
                         {
                             q.Upvotes.Remove(u);
                             return;
@@ -188,6 +195,24 @@ namespace Domain
 
         public void UpvoteAnswer(string qId, string aId, int uId)
         {
+            foreach (Question q in questions)
+            {
+                if (q.Id == qId)
+                {
+                    foreach (Answer a in q.Answers)
+                    {
+                        if (a.Id == aId)
+                        {
+                            a.Upvotes.Add(CreateUpvote(aId, uId));
+                            return;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void RemoveUpvoteA(string qId, string aId, int uId)
+        {
             foreach(Question q in questions)
             {
                 if(q.Id == qId)
@@ -196,13 +221,18 @@ namespace Domain
                     {
                         if(a.Id == aId)
                         {
-                            a.Upvotes.Add(CreateUpvote(aId, uId));
-                            return;
+                            foreach(Upvote u in a.Upvotes)
+                            {
+                                if(u.UserId == uId)
+                                {
+                                    a.Upvotes.Remove(u);
+                                    return;
+                                }
+                            }
                         }
                     }
                 }
             }
-
         }
 
         public void Login(User u)

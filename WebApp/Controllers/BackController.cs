@@ -36,17 +36,41 @@ namespace WebApp.Controllers
         public ActionResult UpvoteQ(string data)
         {
             string[] words = data.Split(' ');
+            string qId = words[0];
             int userId = int.Parse(words[1]);
-            system.UpvoteQuestion(words[0], userId);
+            system.UpvoteQuestion(qId, userId);
             return PartialView("_Partial");
         }
 
         public ActionResult RemoveUpvoteQ(string data)
         {
             string[] words = data.Split(' ');
+            string qId = words[0];
             int userId = int.Parse(words[1]);
-            system.RemoveUpvoteQ(words[0], userId);
+            system.RemoveUpvoteQ(qId, userId);
             return PartialView("_Partial");
         }
+
+        public ActionResult UpvoteA(string data)
+        {
+            string[] words = data.Split(' ');
+            string qId = words[1];
+            string aId = words[0];
+            int userId = int.Parse(words[2]);
+            system.UpvoteAnswer(qId, aId, userId);
+            return PartialView("_Partial");
+        }
+        
+        public ActionResult RemoveUpvoteA(string data)
+        {
+            string[] words = data.Split(' ');
+            string qId = words[1];
+            string aId = words[0];
+            int userId = int.Parse(words[2]);
+            system.RemoveUpvoteA(qId, aId, userId);
+            return PartialView("_Partial");
+        }
+
+
     }
 }

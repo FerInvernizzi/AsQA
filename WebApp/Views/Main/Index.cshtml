@@ -16,14 +16,14 @@
                         if (u.Username != ViewBag.loggedIn.Username)
                         {
                             <p class="q-user">
-                                by:
+                                by
                                 @u.Username
                             </p>
                         }
                         else
                         {
                             <p class="q-user">
-                                by:
+                                by
                                 Me
                             </p>
                         }
@@ -31,6 +31,7 @@
                 }
                 @if (ViewBag.loggedIn.Username == "null")
                 {
+                    <txt>&nbsp&nbsp</txt>
                     <a class="upvote" href="/Main/Login">
                         <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
@@ -49,36 +50,109 @@
                     }
                     else
                     {
+                        bool liked = false;
                         foreach (Upvote u in q.Upvotes)
                         {
                             if (u.UserId == ViewBag.loggedIn.Id)
                             {
-                                <button id="@q.Id" class="upvote rotate" onclick="upVoteQ(@q.Id)">
-                                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
-                                    </svg>
-                                </button>
+                                liked = true;
                             }
+                        }
+
+                        if (liked)
+                        {
+                            <button id="@q.Id" class="upvote rotate" onclick="upVoteQ(@q.Id)">
+                                <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
+                                </svg>
+                            </button>
+                        }
+                        else
+                        {
+                            <button id="@q.Id" class="upvote" onclick="upVoteQ(@q.Id)">
+                                <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
+                                </svg>
+                            </button>
                         }
                     }
                 }
             </div>
-            <ul>
+            <div class="pseudo-ul">
                 @foreach (Answer a in q.Answers)
                 {
-                    <li class="answer" id="@a.Id  @q.Id">@a.Content</li>
-                    foreach (User u in ViewBag.users)
-                    {
-                        if (a.UserId == u.Id)
+                    <div class="whole-answer">
+                        <div class="answer">@a.Content</div>
+                        @foreach (User u in ViewBag.users)
                         {
-                            <p class="q-user">
-                                by
-                                @u.Username
-                            </p>
+                            if (a.UserId == u.Id)
+                            {
+                                <p class="q-user">
+                                    @if (u.Username != ViewBag.loggedIn.Username)
+                                    {
+                                        <txt>by</txt>
+                                        @u.Username
+                                    }
+                                    else
+                                    {
+                                        <txt>by Me</txt>
+                                    }
+
+                                    @if (ViewBag.loggedIn.Username == "null")
+                                    {
+                                        <txt>&nbsp&nbsp</txt>
+                                        <a class="upvote" href="/Main/Login">
+                                            <svg width="7" height="5" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
+                                            </svg>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        if (a.Upvotes.Count == 0)
+                                        {
+                                            <button id="@a.Id" class="upvote" onclick="upVoteA(@a.Id, @q.Id)">
+                                                <svg width="7" height="5" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
+                                                </svg>
+                                            </button>
+                                        }
+                                        else
+                                        {
+                                            bool liked = false;
+                                            foreach (Upvote up in a.Upvotes)
+                                            {
+                                                if (up.UserId == ViewBag.loggedIn.Id)
+                                                {
+                                                    liked = true;
+                                                }
+                                            }
+
+                                            if (liked)
+                                            {
+                                                <button id="@a.Id" class="upvote rotate-a" onclick="upVoteA(@a.Id, @q.Id)">
+                                                    <svg width="7" height="5" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
+                                                    </svg>
+                                                </button>
+                                            }
+                                            else
+                                            {
+                                                <button id="@a.Id" class="upvote" onclick="upVoteA(@a.Id, @q.Id)">
+                                                    <svg width="7" height="5" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
+                                                    </svg>
+                                                </button>
+                                            }
+                                        }
+
+                                    }
+                                </p>
+                            }
                         }
-                    }
+                    </div>
                 }
-            </ul>
+            </div>
         </article>
     }
 </main>
@@ -105,9 +179,31 @@
                 url: "@Url.Action("RemoveUpvoteQ", "Back")",
             });
         }
+        return;
     }
 
-    function upVoteA(aId, qId) { }
+    function upVoteA(a, q) {
+        a.classList.toggle("rotate-a");
+
+        let send = a.id + " " + q.id + " @ViewBag.loggedIn.Id";
+
+        if (a.classList.contains("rotate-a")) {
+            $.ajax({
+                type: "POST",
+                dataType: "application/json; charset=utf-8",
+                data: { "data": send },
+                url: "@Url.Action("UpvoteA", "Back")",
+            });
+        } else {
+            $.ajax({
+                type: "POST",
+                dataType: "application/json; charset=utf-8",
+                data: { "data": send },
+                url: "@Url.Action("RemoveUpvoteA", "Back")",
+            });
+        }
+        return;
+    }
 
 </script>
 

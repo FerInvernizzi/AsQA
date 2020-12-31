@@ -135,7 +135,13 @@ nav ul{
     height: 13px;
 }
 
-.rotate path{
+.rotate-a svg {
+    transform: rotate(180deg);
+    width: 8px;
+    height: 6px;
+}
+
+.rotate path, .rotate-a path{
     fill: rgb(215, 56, 94);
 }
 
@@ -218,4 +224,26 @@ section{
     max-width: 290px;
     padding: 10px;
     transition: .3s all ease;
+}
+
+.pseudo-ul {
+    display: block;
+    list-style-type: disc;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 30px;
+}
+
+.answer:before {
+    content: '';
+    display: inline-block;
+    height: .8em;
+    width: .8em;
+    background-image: url('../img/rhombus.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding-left: 2em;
+    margin-left: -1.4em;
 }
