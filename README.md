@@ -14,7 +14,6 @@ For this app I'm using:
 - HTML (.cshtml)
 - JavaScript
 - CSS
-- Bootstrap
 - Git
 - GitHub
 - FileZilla for deployment on my FTP (maravillas.eu/codigo/...)
@@ -27,8 +26,8 @@ For this app I'm using:
 
 - [] Display for every view
   - [x] Nav
-  - [] Question display
-- [] Overall design pattern and color palette picked
+  - [x] Question display
+- [x] Overall design pattern and color palette picked
 
 ## Color list once picked:
 
@@ -62,14 +61,14 @@ For this app I'm using:
 
 ### Main features:
 
-- [] Q & A Display's as articles in main feed
-- [] Random question button
+- [x] Q & A Display's as articles in main feed
 
 #### While Logged In:
 
+- [] Random question button
 - [] Posting a question
 - [] Answering questions
-- [] Upvoting system
+- [x] Upvoting system
 - [] Faving questions
 - [] Profile
 - [] Display favorite questions
