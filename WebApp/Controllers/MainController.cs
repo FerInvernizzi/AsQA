@@ -23,11 +23,13 @@ namespace WebApp.Controllers
 
         public ActionResult Login()
         {
+            ViewBag.logerror = false;
             return View();
         }
 
         public ActionResult Register()
         {
+            ViewBag.users = system.Users;
             return View();
         }
     }

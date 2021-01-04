@@ -27,7 +27,7 @@
                     <path d="M230 153.313C253 151.313 276 149.313 299 147.313" stroke="#D7385E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </a>
-            @if (ViewBag.Title != "Login")
+            @if (ViewBag.Title != "Login" && ViewBag.Title != "Register")
             {
                 <ul>
                     <a href="/Main/Index">
@@ -41,7 +41,7 @@
                     } else
                     {
                     <a href="#">
-                        <li>Profile</li>
+                        <li>@ViewBag.loggedIn.Username</li>
                     </a>
                     }
 

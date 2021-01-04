@@ -39,7 +39,6 @@ namespace Domain
         }
         #endregion
 
-
         public User LoggedUser
         {
             get { return loggedUser; }

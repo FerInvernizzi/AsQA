@@ -55,9 +55,9 @@ For this app I'm using:
   - it's given an automatic ID
   - starts in reputation = 0
 - [x] Pre-loading some test users
-- [] Login
-  - [] Validation
-  - [] Actual login
+- [x] Login
+  - [x] Validation
+  - [x] Actual login
 
 ### Main features:
 
@@ -152,3 +152,11 @@ This data then is converted into an actual Upvote object using one of the addUpv
 You can login and out and posts you liked while logged in with that account, will appear just as you left them last time you where in.
 
 Pretty proud of myself for pulling this gimmick off, I've been stressing out about this way of handling upvotes for quite a few days by now, but hopefully, progress will speed up a little bit from now on. Still highly motivated, really love seeing this project become bigger and bigger as time goes by.
+
+UPDATE (04/01/2021) Register
+
+- You can finally register a new user. Again, in order not to refresh the whole page every time you try to submit, I made the verification progress in a JS script so that I could show a pop-up whenever sth goes wrong. I used the ViewBag.users in JS by doing this:
+
+let list = @Html.raw(Json.Encode( C# < List >));
+
+Every element becomes an object so it's easy to work with this method.

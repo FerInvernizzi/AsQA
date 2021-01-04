@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "Register";
+}
+
+<section class="s-flex">
+    <div class="form_div">
+        <div class="login-title">
+            <h1>Register</h1>
+        </div>
+        <form action="/Back/Register" method="post" onsubmit="return TryReg()">
+            <div class="form_input">
+                <label for="username">Username</label>
+                <input required type="text" autocomplete="off" id="username" name="username" />
+            </div>
+
+            <div class="form_input">
+                <label for="password">Password</label>
+                <input required type="password" autocomplete="off" id="password" name="password" />
+            </div>
+
+            <div class="form_input">
+                <label for="c_password">Re-enter Password</label>
+                <input required type="password" autocomplete="off" id="c_password" name="c_password" />
+            </div>
+
+            <button class="form-button first" type="submit">Submit</button>
+        </form>
+    </div>
+    <div class="error_dialog">
+        <h2 class="main_error">Something went wrong!</h2>
+        <p>
+            Remember: <br>
+            - Username needs 5 or more characters <br />
+            - Password has to be at least 6 characters long <br />
+            - Password should have 1 uppercase, 1 lowercase and 1 number
+        </p>
+    </div>
+</section>
+
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script>
+
+    $(document).ready(() => {
+        $(".error_dialog").hide();
+    });
+
+    function TryReg() {
+        $(".error_dialog").hide();
+        $(".main_error").html("Something went wrong!");
+
+        let username = $("#username").val().toLowerCase();
+        let password = $("#password").val();
+        let c_password = $("#c_password").val();
+        let users = @Html.Raw(Json.Encode(ViewBag.users));
+
+        usernameOk = false;
+        passwordOk = false;
+
+        //Username Verification
+        if (username.length < 5) {
+            $(".main_error").html("This username too short!");
+            $(".error_dialog").show("fast");
+            return false;
+        } else {
+            for (i = 0; i < users.length; i++) {
+                if (username == users[i].Username.toLowerCase()) {
+                    $(".main_error").html("This username is already in use");
+                    $(".error_dialog").show("fast");
+                    return false;
+                }
+            }
+            usernameOk = true;
+        }
+
+        //Password Verification
+        if (password.length < 6) {
+            $(".main_error").html("Password too short!");
+            return false;
+        } else {
+            let upper = false;
+            let lower = false;
+            let number = false;
+
+            for (i = 0; i < password.length; i++) {
+                let char = password.charCodeAt(i);
+                if (char > 96 && char < 123) {
+                    lower = true;
+                } else if (char > 64 && char < 91) {
+                    upper = true;
+                } else if (char > 48 && char < 58) {
+                    number = true;
+                }
+            }
+
+            if (!upper || !lower || !number) {
+                $(".main_error").html("This password is not valid");
+                $(".error_dialog").show("fast");
+                return false;
+            } else if (password != c_password) {
+                $(".main_error").html("Passwords don't match");
+                $(".error_dialog").show("fast");
+            } else {
+                passwordOk = true;
+            }
+        }
+
+        if (passwordOk && usernameOk) {
+            $(".error_dialog").hide("fast");
+            return true;
+        }
+        return false;
+    }
+
+</script>

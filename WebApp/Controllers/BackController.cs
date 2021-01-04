@@ -22,6 +22,13 @@ namespace WebApp.Controllers
                     return RedirectToAction("Index", "Main");
                 }
             }
+            ViewBag.logerror = true;
+            return View("~/Views/Main/Login.cshtml");
+        }
+
+        public ActionResult Register(string username, string password)
+        {
+            system.AddUser(username, password);
             return RedirectToAction("Login", "Main");
         }
 
