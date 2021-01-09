@@ -3,71 +3,46 @@
     ViewBag.Title = "Index";
 }
 @using Domain;
-<main class="container-articles">
-    @foreach (Question q in ViewBag.questions)
-    {
-        <article class="post">
-            <h2 class="question">@q.Content</h2>
-            <div class="flex">
-                @foreach (User u in ViewBag.users)
-                {
-                    if (u.Id == q.UserId)
+
+<div class="container">
+    <main class="container-articles">
+        @foreach (Question q in ViewBag.questions)
+        {
+            <article class="post">
+                <h2 class="question">@q.Content</h2>
+                <div class="flex">
+                    @foreach (User u in ViewBag.users)
                     {
-                        if (u.Username != ViewBag.loggedIn.Username)
+                        if (u.Id == q.UserId)
                         {
-                            <p class="q-user">
-                                by
-                                @u.Username
-                            </p>
-                        }
-                        else
-                        {
-                            <p class="q-user">
-                                by
-                                Me
-                            </p>
+                            if (u.Username != ViewBag.loggedIn.Username)
+                            {
+                                <p class="q-user">
+                                    by
+                                    @u.Username
+                                </p>
+                            }
+                            else
+                            {
+                                <p class="q-user">
+                                    by
+                                    Me
+                                </p>
+                            }
                         }
                     }
-                }
-                @if (ViewBag.loggedIn.Username == "null")
-                {
-                    <txt>&nbsp&nbsp</txt>
-                    <a class="upvote" href="/Main/Login">
-                        <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
-                        </svg>
-                    </a>
-                }
-                else
-                {
-                    if (q.Upvotes.Count == 0)
+                    @if (ViewBag.loggedIn.Username == "null")
                     {
-                        <button id="@q.Id" class="upvote" onclick="upVoteQ(@q.Id)">
+                        <txt>&nbsp&nbsp</txt>
+                        <a class="upvote" href="/Main/Login">
                             <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
                             </svg>
-                        </button>
+                        </a>
                     }
                     else
                     {
-                        bool liked = false;
-                        foreach (Upvote u in q.Upvotes)
-                        {
-                            if (u.UserId == ViewBag.loggedIn.Id)
-                            {
-                                liked = true;
-                            }
-                        }
-
-                        if (liked)
-                        {
-                            <button id="@q.Id" class="upvote rotate" onclick="upVoteQ(@q.Id)">
-                                <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
-                                </svg>
-                            </button>
-                        }
-                        else
+                        if (q.Upvotes.Count == 0)
                         {
                             <button id="@q.Id" class="upvote" onclick="upVoteQ(@q.Id)">
                                 <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -75,68 +50,68 @@
                                 </svg>
                             </button>
                         }
-                    }
-                }
-            </div>
-            <div class="pseudo-ul">
-                @foreach (Answer a in q.Answers)
-                {
-                    <div class="whole-answer">
-                        <div class="answer">@a.Content</div>
-                        @foreach (User u in ViewBag.users)
+                        else
                         {
-                            if (a.UserId == u.Id)
+                            bool liked = false;
+                            foreach (Upvote u in q.Upvotes)
                             {
-                                <p class="q-user">
-                                    @if (u.Username != ViewBag.loggedIn.Username)
-                                    {
-                                        <txt>by</txt>
-                                        @u.Username
-                                    }
-                                    else
-                                    {
-                                        <txt>by Me</txt>
-                                    }
+                                if (u.UserId == ViewBag.loggedIn.Id)
+                                {
+                                    liked = true;
+                                }
+                            }
 
-                                    @if (ViewBag.loggedIn.Username == "null")
-                                    {
-                                        <txt>&nbsp&nbsp</txt>
-                                        <a class="upvote" href="/Main/Login">
-                                            <svg width="7" height="5" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
-                                            </svg>
-                                        </a>
-                                    }
-                                    else
-                                    {
-                                        if (a.Upvotes.Count == 0)
+                            if (liked)
+                            {
+                                <button id="@q.Id" class="upvote rotate" onclick="upVoteQ(@q.Id)">
+                                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
+                                    </svg>
+                                </button>
+                            }
+                            else
+                            {
+                                <button id="@q.Id" class="upvote" onclick="upVoteQ(@q.Id)">
+                                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
+                                    </svg>
+                                </button>
+                            }
+                        }
+                    }
+                </div>
+                <div class="pseudo-ul">
+                    @foreach (Answer a in q.Answers)
+                    {
+                        <div class="whole-answer">
+                            <div class="answer">@a.Content</div>
+                            @foreach (User u in ViewBag.users)
+                            {
+                                if (a.UserId == u.Id)
+                                {
+                                    <p class="q-user">
+                                        @if (u.Username != ViewBag.loggedIn.Username)
                                         {
-                                            <button id="@a.Id" class="upvote" onclick="upVoteA(@a.Id, @q.Id)">
-                                                <svg width="7" height="5" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
-                                                </svg>
-                                            </button>
+                                            <txt>by</txt>
+                                            @u.Username
                                         }
                                         else
                                         {
-                                            bool liked = false;
-                                            foreach (Upvote up in a.Upvotes)
-                                            {
-                                                if (up.UserId == ViewBag.loggedIn.Id)
-                                                {
-                                                    liked = true;
-                                                }
-                                            }
+                                            <txt>by Me</txt>
+                                        }
 
-                                            if (liked)
-                                            {
-                                                <button id="@a.Id" class="upvote rotate-a" onclick="upVoteA(@a.Id, @q.Id)">
-                                                    <svg width="7" height="5" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                        <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
-                                                    </svg>
-                                                </button>
-                                            }
-                                            else
+                                        @if (ViewBag.loggedIn.Username == "null")
+                                        {
+                                            <txt>&nbsp&nbsp</txt>
+                                            <a class="upvote" href="/Main/Login">
+                                                <svg width="7" height="5" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
+                                                </svg>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            if (a.Upvotes.Count == 0)
                                             {
                                                 <button id="@a.Id" class="upvote" onclick="upVoteA(@a.Id, @q.Id)">
                                                     <svg width="7" height="5" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -144,18 +119,47 @@
                                                     </svg>
                                                 </button>
                                             }
-                                        }
+                                            else
+                                            {
+                                                bool liked = false;
+                                                foreach (Upvote up in a.Upvotes)
+                                                {
+                                                    if (up.UserId == ViewBag.loggedIn.Id)
+                                                    {
+                                                        liked = true;
+                                                    }
+                                                }
 
-                                    }
-                                </p>
+                                                if (liked)
+                                                {
+                                                    <button id="@a.Id" class="upvote rotate-a" onclick="upVoteA(@a.Id, @q.Id)">
+                                                        <svg width="7" height="5" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
+                                                        </svg>
+                                                    </button>
+                                                }
+                                                else
+                                                {
+                                                    <button id="@a.Id" class="upvote" onclick="upVoteA(@a.Id, @q.Id)">
+                                                        <svg width="7" height="5" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M5 8L0.669873 0.499999L9.33013 0.5L5 8Z" fill="black" />
+                                                        </svg>
+                                                    </button>
+                                                }
+                                            }
+
+                                        }
+                                    </p>
+                                }
                             }
-                        }
-                    </div>
-                }
-            </div>
-        </article>
-    }
-</main>
+                        </div>
+                    }
+                </div>
+            </article>
+        }
+    </main>
+
+</div>
 
 <script>
 

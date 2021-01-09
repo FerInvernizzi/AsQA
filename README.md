@@ -161,3 +161,7 @@ UPDATE (04/01/2021) Register
 let list = @Html.raw(Json.Encode( C# < List >));
 
 Every element becomes an object so it's easy to work with this method.
+
+UPDATE (09/01/2021) Making Questions
+
+- I think I know how I'm gonna implement the creation of a new questions. My girlfriend suggested a button with a (?) inside and I thought of an SVG arrow with a text saying (Ask Something!) for it to be as intuitive as it gets. I think i'll place this button to the right of the main container and the newer questions should be printed first, so that's something else to change.

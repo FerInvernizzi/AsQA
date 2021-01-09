@@ -38,36 +38,38 @@
                         <a href="/Main/Login">
                             <li>Profile</li>
                         </a>
-                    } else
+                    }
+                    else
                     {
-                    <a href="#">
-                        <li>@ViewBag.loggedIn.Username</li>
-                    </a>
+                        <a href="#">
+                            <li>@ViewBag.loggedIn.Username</li>
+                        </a>
                     }
 
-                    @if(ViewBag.loggedIn.Username == "null")
+                    @if (ViewBag.loggedIn.Username == "null")
                     {
-                    <li><a class="btn custom-btn" href="/Main/Login">Login</a></li>
-                    } else
+                        <li><a class="btn custom-btn" href="/Main/Login">Login</a></li>
+                    }
+                    else
                     {
-                    <li><a class="btn custom-btn" href="/Back/Logout">Logout</a></li>
+                        <li><a class="btn custom-btn" href="/Back/Logout">Logout</a></li>
                     }
                 </ul>
             }
         </nav>
-    </div>
+            </div>
 
-    <div class="container body-content">
-        @RenderBody()
-    </div>
+            <div class="container body-content">
+                @RenderBody()
+            </div>
 
-    <div class="container">
-        <hr />
-        <footer class="modal-footer">
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-</body>
+            <div class="container">
+                <hr />
+                <footer class="modal-footer">
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+                </footer>
+            </div>
+            <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+            <script src="~/Scripts/bootstrap.min.js"></script>
+        </body>
 </html>
